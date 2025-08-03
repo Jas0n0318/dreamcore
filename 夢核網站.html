@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>Dreamcore</title>
+		<!DOCTYPE html>
+<html lang="en">
+	  <meta charset="UTF-8" />
+	  <title>Dreamcore</title>
+	  <style>
+		@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+		
+		body {
+		  background-image: url('https://i.pinimg.com/736x/8d/7d/24/8d7d24438b3682116849a724480e522b.jpg');
+		  color: #cecece;
+		  font-family: "VT323", monospace;
+		  letter-spacing: 1px;
+		  justify-content: center;     /* 水平置中 */
+		  align-items: center;         /* 垂直置中 */
+		  min-height: 100vh;           /* 滿版高度 */
+		}
+
+		.container {
+		  width: 80%;
+		  margin: auto;
+		}
+
+		h1.glitch {
+		  font-size: 48px;
+		  position: relative;
+		  color: #fff;
+		  text-align: center;
+		}
+
+		h1.glitch::before,
+		h1.glitch::after {
+		  content: attr(data-text);
+		  position: absolute;
+		  left: 0;
+		  top: 0;
+		  opacity: 0.8;
+		}
+
+		h1.glitch::before {
+		  color: #ff00c8;
+		  animation: glitch 3s infinite ease-in-out alternate;
+		}
+
+		h1.glitch::after {
+		  color: #00ffe7;
+		  animation: glitch2 2s infinite ease-in-out alternate;
+		}
+		h2 {
+			text-align: center;
+		}
+		
+		p {
+			text-align: center;
+		}
+
+		@keyframes glitch {
+		  0% { transform: translate(0); }
+		  20% { transform: translate(-3px,3px); }
+		  40% { transform: translate(-3px,-3px); }
+		  60% { transform: translate(3px,3px); }
+		  80% { transform: translate(3px,-3px); }
+		  100% { transform: translate(0); }
+		}
+
+		@keyframes glitch2 {
+		  0% { transform: translate(0); }
+		  20% { transform: translate(3px,3px); }
+		  40% { transform: translate(2px,-2px); }
+		  60% { transform: translate(-2px,2px); }
+		  80% { transform: translate(-2px,-2px); }
+		  100% { transform: translate(0); }
+		}
+
+		table {
+		  width: 100%;
+		  border-collapse: collapse;
+		  margin-top: 10px;
+		}
+
+		table th, table td {
+		  border: 1px dashed #555;
+		  padding: 8px;
+		  text-align: center;
+		}
+
+		.error-log li:hover {
+		  filter: blur(1px);
+		  color: #ff4949;
+		  cursor: pointer;
+		}
+
+		a {
+		  color: #ff99ff;
+		}
+
+		.links {
+		  margin: 10px 0;
+		}
+	  </style>
+	</head>
+    <body>
+		<div class="container">
+        <h1 class="glitch" data-text="...">H҉̧̛̫̎ą̸̪̠͖҇̉̆̈v҉̧͔͔̉͝e̶̢̥͍̰̓̓͝ y̷̢̯̯͚̌̋͞õ̵̢̩̽͝u҉̫̗҇̈͐͢ e̴̢͙̎͋͂͝v̷̡̫̂̆́͝e҉̤͇̬̌̈͒͢͞r̷̞̭̓͐͢͞ͅ b̸̧̜͍̋̄͗͝e҉̞̀͢͝e҉̡͇͈̲̉͛̕ņ̴̛͎̱͈̓ h҉̧̳̭̂͛͡e҉͚͍͈́̔̕͢ṟ̶̢̯̽̌͑͡ë̴̠́͊͢͞ͅ?̵̡̝̬̝҇̊?̴̢͞<br>̗͖̀̉ ȩ̸҇v̸̕͜e̸̡͠r̶̕͜ b̸̢̛e̶̛͜e̷͢͡n҈̧҇ h҈̡͞e̸̡͡r̵̡͞e̷̡̛?҈̢͠</h1>
+        <hr>
+        <h2>A̸b҉o̷u̷̸̢u҉͢͝t̵̨͡ M̷͜͠e҉̧̕</h2>
+        <p>T̶h̴i҉s̶ p̴l̶a̴c̵e҉ f҈e̸e҉l҈s̶ f̴a̷m̵i̴l̸i̵a̵r҈.҉.҈.̸
+        <br>L̸i̷k҉e̷ a̶ m̸e̷m̶o҉r̶y̶ I̷ n҈e҉v̸e̴r̶ l҉i҉v҈e҉d̴.̶
+        </p>
+        <a href="https://www.google.com/search?q=dreamcore&sca_esv=b1a258fc65f3ee31&biw=1536&bih=730&sxsrf=AE3TifMgc9m7kw6mXM5cSnIEg-vWE7o1sQ%3A1754123761856&ei=8c2NaJKINOPz1e8P_sb9mAw&ved=0ahUKEwjSxN6d3OuOAxXjefUHHX5jH8MQ4dUDCBA&uact=5&oq=dreamcore&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWRyZWFtY29yZTIEECMYJzIKEC4YgAQYQxiKBTIFEAAYgAQyBRAAGIAEMgUQLhiABDIFEAAYgAQyChAAGIAEGEMYigUyChAAGIAEGEMYigUyBRAAGIAEMgUQABiABEjCGFAAWABwAHgBkAEAmAFhoAGjAaoBATK4AQPIAQD4AQGYAgKgAqsBwgIIEAAYBxgKGB7CAgYQABgHGB6YAwCSBwMxLjGgB6wRsgcDMS4xuAerAcIHBTAuMS4xyAcG&sclient=gws-wiz-serp" target = '_blank' class="links">d̷r̵e̶a̴m̸c̸o̶r҈e҉</a>
+        <a href='https://www.youtube.com/watch?v=zQEL4HdE2fo&t=4997s' target = '_blank' class="links"><img src = 'https://wallpapers.com/images/featured/weirdcore-vh82uom183865bok.jpg' height = '300px'></a>
+        <ol class="error-log">
+            <li>E̸r̸r̴o̶r҉ 3̴0̸2̴ —̸ L̶o҈o̶p̷ d҉e̴t̸e̵c҉t̶e҉d̶</li>
+            <li>U̷n̶k̷n̸o̸w҈n҈ l҉o̵g̸i҈n҈:̷ [҉U̵S̷E̴R̶-҈0̷0̸4̷2̵]̸</li>
+            <li>A҉c҉c҈e̸s̷s̴ D̸e҉n̵i҉e̸d̴:̸ M̸e̷m̸o̶r̵y̴ #̸0҉1̴9̷ l̴o҈c̷k̴e̴d҈</li>
+            <li>S҈t̵a̸t҈u̵s̷:̵ A҉w̷a҈i̵t̶i҈n҈g҈ i҉n҉s̵t̸r̸u҉c̵t̵i̷o҉n̴.̷.̵.̶</li>
+        </ol>
+        <h2>D̶̢͡r̸̢͝ę̵҇a҉̨͞m̸͜͞ R̶҇͜e҈̨҇ç̷͠u҈͜͞r̵̢̛r̷҇͢e̵̡͠n҈͢͡c̸̡̛e҉̢̛ T̴̨҇a̵̕͜b҈̨͝ļ̸͞ȩ̸͡</h2>
+        <table>
+            <tr>
+                <th>Dream ID</th>
+                <th>Theme</th>
+                <th>Frequency</th>
+                <th>Risk Level</th>
+            </tr>
+            <tr>
+                <td class="glitch-num">D-007</td>
+                <td>Empty Hotel</td>
+                <td>14 times</td>
+                <td>Moderate</td>
+            </tr>
+            <tr>
+                <td class="glitch-num">D-019</td>
+                <td>B̵̡͡r̴̕͜o̸̡͠k҈̛͢e̵̡̛n̴̡̕ M̵̛͢i̵̡̕r̷̨҇r҈͢͞o̷̧͠r҉҇͢</td>
+                <td>22 times</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td class="glitch-num">D-031</td>
+                <td>Lost in School</td>
+                <td>2̷͜͡2҉̢̛2҉̧͞2̴̡҇2̷̢̕2̷͜͝2҉̢͡2̴͜͡2҉̧͞2̴͢͠2̸̧̕2̸̛͜2̷̢͠2̸͢͝2̶̧̕2҉҇͜2̴̛͜2̷̢͞2̵͜͝2̸҇͜2̵̕͜2̶̢͠2̷҇͢2̷̡͠2̵̧҇2̴̛͜2̷̨͡</td>
+                <td>Low</td>
+            </tr>
+        </table>
+        
+        <h2>Ḃ̴͙͎͍͈͑̑͋͢͞a̷̮͖̩͗͂̐̊̚͢͞c̸̱̫̈̀̉̑̈̕͢k҉͓͍̃̿̚͢͞r҉̘̳̘̊́̅̽̽͢͡o҉̛̪̥̯̽̑͜o̶̡͉̣̊̀͛͛͆͝ͅm̴̢̛̪͎̣͇̩̃̐̅ş̵͕̰̃̐̀̕</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbPaWvqAEq4?si=s_pSsAHFU_JS0DZe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+		
+		<script>
+		// glitch 數字變動效果
+		const glitchNum = document.querySelector('.glitch-num');
+		if (glitchNum) {
+		  setInterval(() => {
+			glitchNum.textContent = Math.floor(Math.random() * 100);
+		  }, 200);
+		}
+
+		// 點擊 error-log 顯示提示
+		document.querySelectorAll('.error-log li').forEach(li => {
+		  li.addEventListener('click', () => {
+			alert('⚠ RESTRICTED ACCESS\n' + li.innerText);
+		  });
+		});
+		</script>	
+	
+	</body>
+</html>
