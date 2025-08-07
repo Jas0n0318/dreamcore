@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>模擬啟動中</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
     body {
       background-color: #0d0d0d;
@@ -122,12 +123,18 @@
       }
     }
 
+    $("button").click(function () {
+      $("#dialog").text("...你能分辨幻覺與現實嗎？你如果察覺到發生的事物是幻覺請你按下離開測試，判斷正確將繼續進行下階段測驗。反之，測驗將重新開始。通過7階段測驗得以離開夢境");
+    });
+
+
     window.onload = () => {
       showDialogue();
     };
   </script>
 </body>
 </html>
+
 
 
 
