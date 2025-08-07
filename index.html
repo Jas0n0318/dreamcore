@@ -1,170 +1,132 @@
-<html>
-    <head>
-        <title>Dreamcore</title>
-		<!DOCTYPE html>
-<html lang="en">
-	  <meta charset="UTF-8" />
-	  <title>Dreamcore</title>
-	  <style>
-		@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-		
-		body {
-		  background-image: url('https://i.pinimg.com/736x/8d/7d/24/8d7d24438b3682116849a724480e522b.jpg');
-		  color: #cecece;
-		  font-family: "VT323", monospace;
-		  letter-spacing: 1px;
-		  justify-content: center;     /* 水平置中 */
-		  align-items: center;         /* 垂直置中 */
-		  min-height: 100vh;           /* 滿版高度 */
-		}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>模擬啟動中</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #33ff33;
+      font-family: "Courier New", monospace;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-		.container {
-		  width: 80%;
-		  margin: auto;
-		}
+    #container {
+      width: 80%;
+      max-width: 700px;
+      background-color: #111;
+      border: 2px solid #33ff33;
+      padding: 20px;
+      box-shadow: 0 0 20px #33ff33;
+      animation: flicker 1.5s infinite alternate;
+    }
 
-		h1.glitch {
-		  font-size: 48px;
-		  position: relative;
-		  color: #fff;
-		  text-align: center;
-		}
+    @keyframes flicker {
+      from { box-shadow: 0 0 10px #33ff33; }
+      to { box-shadow: 0 0 25px #33ff33; }
+    }
 
-		h1.glitch::before,
-		h1.glitch::after {
-		  content: attr(data-text);
-		  position: absolute;
-		  left: 0;
-		  top: 0;
-		  opacity: 0.8;
-		}
+    #dialogue {
+      white-space: pre-line;
+      min-height: 150px;
+      line-height: 1.6;
+    }
 
-		h1.glitch::before {
-		  color: #ff00c8;
-		  animation: glitch 3s infinite ease-in-out alternate;
-		}
+    #options {
+      margin-top: 20px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-		h1.glitch::after {
-		  color: #00ffe7;
-		  animation: glitch2 2s infinite ease-in-out alternate;
-		}
-		h2 {
-			text-align: center;
-		}
-		
-		p {
-			text-align: center;
-		}
+    .option-button {
+      background-color: transparent;
+      border: 1px solid #33ff33;
+      color: #33ff33;
+      padding: 10px;
+      font-family: inherit;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-		@keyframes glitch {
-		  0% { transform: translate(0); }
-		  20% { transform: translate(-3px,3px); }
-		  40% { transform: translate(-3px,-3px); }
-		  60% { transform: translate(3px,3px); }
-		  80% { transform: translate(3px,-3px); }
-		  100% { transform: translate(0); }
-		}
+    .option-button:hover {
+      background-color: #33ff33;
+      color: #111;
+    }
 
-		@keyframes glitch2 {
-		  0% { transform: translate(0); }
-		  20% { transform: translate(3px,3px); }
-		  40% { transform: translate(2px,-2px); }
-		  60% { transform: translate(-2px,2px); }
-		  80% { transform: translate(-2px,-2px); }
-		  100% { transform: translate(0); }
-		}
+    .blinking-cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 1s step-end infinite;
+    }
 
-		table {
-		  width: 100%;
-		  border-collapse: collapse;
-		  margin-top: 10px;
-		}
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="dialogue"></div>
+    <div id="options">
+      <button class="option-button">開始診斷</button>
+      <button class="option-button">關閉系統</button>
+    </div>
+  </div>
 
-		table th, table td {
-		  border: 1px dashed #555;
-		  padding: 8px;
-		  text-align: center;
-		}
+  <script>
+    const dialogueElement = document.getElementById('dialogue');
+    const optionsElement = document.getElementById('options');
+    const dialogueLines = [
+      "…載入中。",
+      "請稍候。",
+      "",
+      "[系統訊息]：你已進入觀測區段 A3。",
+      "請確認你是否為人類使用者。"
+    ];
 
-		.error-log li:hover {
-		  filter: blur(1px);
-		  color: #ff4949;
-		  cursor: pointer;
-		}
+    let currentLine = 0;
+    let typingSpeed = 40;
 
-		a {
-		  color: #ff99ff;
-		}
+    function typeLine(line, callback) {
+      let i = 0;
+      const interval = setInterval(() => {
+        dialogueElement.innerHTML += line.charAt(i);
+        i++;
+        if (i >= line.length) {
+          clearInterval(interval);
+          dialogueElement.innerHTML += '\n';
+          if (callback) callback();
+        }
+      }, typingSpeed);
+    }
 
-		.links {
-		  margin: 10px 0;
-		}
-	  </style>
-	</head>
-    <body>
-		<div class="container">
-        <h1 class="glitch" data-text="...">H҉̧̛̫̎ą̸̪̠͖҇̉̆̈v҉̧͔͔̉͝e̶̢̥͍̰̓̓͝ y̷̢̯̯͚̌̋͞õ̵̢̩̽͝u҉̫̗҇̈͐͢ e̴̢͙̎͋͂͝v̷̡̫̂̆́͝e҉̤͇̬̌̈͒͢͞r̷̞̭̓͐͢͞ͅ b̸̧̜͍̋̄͗͝e҉̞̀͢͝e҉̡͇͈̲̉͛̕ņ̴̛͎̱͈̓ h҉̧̳̭̂͛͡e҉͚͍͈́̔̕͢ṟ̶̢̯̽̌͑͡ë̴̠́͊͢͞ͅ?̵̡̝̬̝҇̊?̴̢͞<br>̗͖̀̉ ȩ̸҇v̸̕͜e̸̡͠r̶̕͜ b̸̢̛e̶̛͜e̷͢͡n҈̧҇ h҈̡͞e̸̡͡r̵̡͞e̷̡̛?҈̢͠</h1>
-        <hr>
-        <h2>A̸b҉o̷u̷̸̢u҉͢͝t̵̨͡ M̷͜͠e҉̧̕</h2>
-        <p>T̶h̴i҉s̶ p̴l̶a̴c̵e҉ f҈e̸e҉l҈s̶ f̴a̷m̵i̴l̸i̵a̵r҈.҉.҈.̸
-        <br>L̸i̷k҉e̷ a̶ m̸e̷m̶o҉r̶y̶ I̷ n҈e҉v̸e̴r̶ l҉i҉v҈e҉d̴.̶
-        </p>
-        <a href="https://www.google.com/search?q=dreamcore&sca_esv=b1a258fc65f3ee31&biw=1536&bih=730&sxsrf=AE3TifMgc9m7kw6mXM5cSnIEg-vWE7o1sQ%3A1754123761856&ei=8c2NaJKINOPz1e8P_sb9mAw&ved=0ahUKEwjSxN6d3OuOAxXjefUHHX5jH8MQ4dUDCBA&uact=5&oq=dreamcore&gs_lp=Egxnd3Mtd2l6LXNlcnAiCWRyZWFtY29yZTIEECMYJzIKEC4YgAQYQxiKBTIFEAAYgAQyBRAAGIAEMgUQLhiABDIFEAAYgAQyChAAGIAEGEMYigUyChAAGIAEGEMYigUyBRAAGIAEMgUQABiABEjCGFAAWABwAHgBkAEAmAFhoAGjAaoBATK4AQPIAQD4AQGYAgKgAqsBwgIIEAAYBxgKGB7CAgYQABgHGB6YAwCSBwMxLjGgB6wRsgcDMS4xuAerAcIHBTAuMS4xyAcG&sclient=gws-wiz-serp" target = '_blank' class="links">d̷r̵e̶a̴m̸c̸o̶r҈e҉</a>
-        <a href='https://www.youtube.com/watch?v=zQEL4HdE2fo&t=4997s' target = '_blank' class="links"><img src = 'https://wallpapers.com/images/featured/weirdcore-vh82uom183865bok.jpg' height = '300px'></a>
-        <ol class="error-log">
-            <li>E̸r̸r̴o̶r҉ 3̴0̸2̴ —̸ L̶o҈o̶p̷ d҉e̴t̸e̵c҉t̶e҉d̶</li>
-            <li>U̷n̶k̷n̸o̸w҈n҈ l҉o̵g̸i҈n҈:̷ [҉U̵S̷E̴R̶-҈0̷0̸4̷2̵]̸</li>
-            <li>A҉c҉c҈e̸s̷s̴ D̸e҉n̵i҉e̸d̴:̸ M̸e̷m̸o̶r̵y̴ #̸0҉1̴9̷ l̴o҈c̷k̴e̴d҈</li>
-            <li>S҈t̵a̸t҈u̵s̷:̵ A҉w̷a҈i̵t̶i҈n҈g҈ i҉n҉s̵t̸r̸u҉c̵t̵i̷o҉n̴.̷.̵.̶</li>
-        </ol>
-        <h2>D̶̢͡r̸̢͝ę̵҇a҉̨͞m̸͜͞ R̶҇͜e҈̨҇ç̷͠u҈͜͞r̵̢̛r̷҇͢e̵̡͠n҈͢͡c̸̡̛e҉̢̛ T̴̨҇a̵̕͜b҈̨͝ļ̸͞ȩ̸͡</h2>
-        <table>
-            <tr>
-                <th>Dream ID</th>
-                <th>Theme</th>
-                <th>Frequency</th>
-                <th>Risk Level</th>
-            </tr>
-            <tr>
-                <td class="glitch-num">D-007</td>
-                <td>Empty Hotel</td>
-                <td>14 times</td>
-                <td>Moderate</td>
-            </tr>
-            <tr>
-                <td class="glitch-num">D-019</td>
-                <td>B̵̡͡r̴̕͜o̸̡͠k҈̛͢e̵̡̛n̴̡̕ M̵̛͢i̵̡̕r̷̨҇r҈͢͞o̷̧͠r҉҇͢</td>
-                <td>22 times</td>
-                <td>High</td>
-            </tr>
-            <tr>
-                <td class="glitch-num">D-031</td>
-                <td>Lost in School</td>
-                <td>2̷͜͡2҉̢̛2҉̧͞2̴̡҇2̷̢̕2̷͜͝2҉̢͡2̴͜͡2҉̧͞2̴͢͠2̸̧̕2̸̛͜2̷̢͠2̸͢͝2̶̧̕2҉҇͜2̴̛͜2̷̢͞2̵͜͝2̸҇͜2̵̕͜2̶̢͠2̷҇͢2̷̡͠2̵̧҇2̴̛͜2̷̨͡</td>
-                <td>Low</td>
-            </tr>
-        </table>
-        
-        <h2>Ḃ̴͙͎͍͈͑̑͋͢͞a̷̮͖̩͗͂̐̊̚͢͞c̸̱̫̈̀̉̑̈̕͢k҉͓͍̃̿̚͢͞r҉̘̳̘̊́̅̽̽͢͡o҉̛̪̥̯̽̑͜o̶̡͉̣̊̀͛͛͆͝ͅm̴̢̛̪͎̣͇̩̃̐̅ş̵͕̰̃̐̀̕</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbPaWvqAEq4?si=s_pSsAHFU_JS0DZe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-		</div>
-		
-		<script>
-		// glitch 數字變動效果
-		const glitchNum = document.querySelector('.glitch-num');
-		if (glitchNum) {
-		  setInterval(() => {
-			glitchNum.textContent = Math.floor(Math.random() * 100);
-		  }, 200);
-		}
+    function showDialogue() {
+      if (currentLine < dialogueLines.length) {
+        typeLine(dialogueLines[currentLine], () => {
+          currentLine++;
+          showDialogue();
+        });
+      } else {
+        // 所有對話輸出後出現選項
+        setTimeout(() => {
+          optionsElement.style.display = 'flex';
+        }, 500);
+      }
+    }
 
-		// 點擊 error-log 顯示提示
-		document.querySelectorAll('.error-log li').forEach(li => {
-		  li.addEventListener('click', () => {
-			alert('⚠ RESTRICTED ACCESS\n' + li.innerText);
-		  });
-		});
-		</script>	
-	
-	</body>
+    window.onload = () => {
+      showDialogue();
+    };
+  </script>
+</body>
 </html>
+
+
